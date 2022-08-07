@@ -16,9 +16,9 @@ class Boid:
                  left_bound: float = 0,
                  lower_bound: float = 0,
                  distance: float = 10) -> None:
-        seed = time() + uniform(-1000, 1000)
+        seed: int = time() + uniform(-1000, 1000)
         SEED(str(seed).encode("utf-8"))
-        self.phi_angle = uniform(0, 2 * np.pi)
+        self.phi_angle: float = uniform(0, 2 * np.pi)
         self.velocity: float = velocity_max
         self.left_bound: float = left_bound
         self.lower_bound: float = lower_bound
