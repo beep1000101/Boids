@@ -64,9 +64,9 @@ class Boid:
 
 
 class Flock(Boid):
-    def __init__(self, number_of_boids: int = 10, velocity_max: float = 1) -> None:
+    def __init__(self, number_of_boids: int = 10, boid_velocity_max: float = 1) -> None:
         number_of_boids: int = 1 if number_of_boids <= 0 else number_of_boids
-        self._flock_array: np.array = np.array([Boid(velocity_max=velocity_max) for _ in range(number_of_boids)])
+        self._flock_array: np.array = np.array([Boid(velocity_max=boid_velocity_max) for _ in range(number_of_boids)])
 
     def get_positions_x(self) -> np.array:
         return np.array([boid.get_position_x() for boid in self._flock_array])
