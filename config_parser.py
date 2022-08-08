@@ -20,3 +20,6 @@ class ConfigParser:
 
     def get_figsize(self) -> tuple:
         return tuple(int(value) for value in self.config["matplotlib_params"]["figsize"].split(","))
+
+    def get_quiver_pivot(self) -> str:
+        return self.config["quiver_params"]["quiver_pivot"]

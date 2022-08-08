@@ -16,7 +16,7 @@ def main():
                                   flock.get_velocity_versors_x(),
                                   flock.get_velocity_versors_y(),
                                   flock.get_phi_angles(),
-                                  pivot='mid')
+                                  pivot=cofig_parser.get_quiver_pivot())
 
         plt.xlim(*cofig_parser.get_matplotlib_xlim_params())
         plt.ylim(*cofig_parser.get_matplotlib_ylim_params())
@@ -31,7 +31,7 @@ def main():
                   flock.get_velocity_versors_x(),
                   flock.get_velocity_versors_y(),
                   flock.get_phi_angles(),
-                  pivot='mid')
+                  pivot=cofig_parser.get_quiver_pivot())
 
     anim = animation.FuncAnimation(fig, animate, fargs=(flock, Q, 0.01), interval=50, blit=False)
 
