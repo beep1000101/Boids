@@ -35,8 +35,8 @@ def main():
 
     anim = animation.FuncAnimation(fig, animate, fargs=(flock, Q, 0.01), interval=50, blit=False)
 
-    plt.xlim(0, 10)
-    plt.ylim(0, 10)
+    plt.xlim(*cofig_parser.get_matplotlib_xlim_params())
+    plt.ylim(*cofig_parser.get_matplotlib_ylim_params())
     plt.show()
 
 

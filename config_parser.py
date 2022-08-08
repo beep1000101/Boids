@@ -6,8 +6,8 @@ from os import path
 class ConfigParser:
     def __init__(self) -> None:
         self.config = configparser.ConfigParser()
-        _path = path.join(path.realpath(path.dirname(__name__)), "config.ini")
-        self.config.read(_path)
+        __path = path.join(path.realpath(path.dirname(__name__)), "config.ini")
+        self.config.read(__path)
 
     def get_flock_params(self) -> dict:
         return {key: int(value) for key, value in self.config["flock_params"].items()}

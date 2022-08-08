@@ -16,7 +16,7 @@ class Boid:
                  left_bound: float = 0,
                  lower_bound: float = 0,
                  distance: float = 10) -> None:
-        seed: int = time() + uniform(-1000, 1000)
+        seed: float = time() + uniform(-1000, 1000)
         SEED(str(seed).encode("utf-8"))
         self.phi_angle: float = uniform(0, 2 * np.pi)
         self.velocity: float = velocity_max
@@ -89,6 +89,6 @@ class Flock(Boid):
     def get_phi_angles(self) -> np.array:
         return np.array([boid.get_phi() for boid in self._flock_array])
 
-    def update_flock_state(self, dt) -> None:
+    def update_flock_state(self, dt: float) -> None:
         for boid in self._flock_array:
             boid.update_boid_state(dt)
