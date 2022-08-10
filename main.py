@@ -8,7 +8,7 @@ from config_parser import ConfigParser
 def main():
     cp = ConfigParser()
 
-    def animate(i, flock_object: Flock, quiver_object, dt):
+    def animate(i: int, flock_object: Flock, quiver_object, dt: float):
         flock_object.update_flock_state(dt)
         ax.cla()
         quiver_object = ax.quiver(flock.get_positions_x(),
