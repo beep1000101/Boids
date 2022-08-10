@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 
 from boids import Flock
 from config_parser import ConfigParser
+from matplotlib.animation import FuncAnimation
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
                   flock.get_phi_angles(),
                   pivot=cp.get_quiver_pivot())
 
-    anim = animation.FuncAnimation(fig, animate, fargs=(flock, Q, 0.01), interval=50, blit=False)
+    animation = FuncAnimation(fig, animate, fargs=(flock, Q, 0.01), interval=50, blit=False)
 
     plt.xlim(*cp.get_matplotlib_xlim_params())
     plt.ylim(*cp.get_matplotlib_ylim_params())
