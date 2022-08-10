@@ -23,3 +23,10 @@ class ConfigParser:
 
     def get_quiver_pivot(self) -> str:
         return self.config["quiver_params"]["quiver_pivot"]
+
+    def get_animation_dt(self) -> float:
+        return float(self.config["animation_params"]["dt"])
+
+    def get_animation_kwargs(self) -> dict:
+        __content = self.config["animation_params"]["kwargs"].split(",")
+        return {"interval": int(__content[0]), "blit": bool(int(__content[1]))}

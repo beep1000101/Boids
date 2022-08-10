@@ -33,7 +33,7 @@ def main():
                   flock.get_phi_angles(),
                   pivot=cp.get_quiver_pivot())
 
-    animation = FuncAnimation(fig, animate, fargs=(flock, Q, 0.01), interval=50, blit=False)
+    animation = FuncAnimation(fig, animate, fargs=(flock, Q, cp.get_animation_dt()), **cp.get_animation_kwargs())
 
     plt.xlim(*cp.get_matplotlib_xlim_params())
     plt.ylim(*cp.get_matplotlib_ylim_params())
