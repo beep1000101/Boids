@@ -61,7 +61,7 @@ class Boid:
         self.position[1] = (self.position[1] + self.lower_bound + self.distance) % (self.lower_bound + self.distance)
 
 
-class Flock(Boid):
+class Flock():
     def __init__(self, number_of_boids: int = 10, boid_velocity_max: float = 1) -> None:
         number_of_boids: int = 1 if number_of_boids <= 0 else number_of_boids
         self._flock_array: array = array([Boid(velocity_max=boid_velocity_max) for _ in range(number_of_boids)])
