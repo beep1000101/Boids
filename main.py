@@ -16,27 +16,30 @@ def main():
                                   flock.get_velocity_versors_x(),
                                   flock.get_velocity_versors_y(),
                                   flock.get_phi_angles(),
-                                  pivot=cp.get_quiver_pivot())
+                                  pivot=cp.init_pivot())
 
-        plt.xlim(*cp.get_matplotlib_xlim_params())
-        plt.ylim(*cp.get_matplotlib_ylim_params())
+        plt.xlim(*cp.init_xlim())
+        plt.ylim(*cp.init_ylim())
         return quiver_object
 
-    flock = Flock(**cp.get_flock_params())
+    flock = Flock(**cp.init_flock())
 
-    fig, ax = plt.subplots(figsize=cp.get_figsize())
+    fig, ax = plt.subplots(figsize=cp.init_figsize())
 
     Q = ax.quiver(flock.get_positions_x(),
                   flock.get_positions_y(),
                   flock.get_velocity_versors_x(),
                   flock.get_velocity_versors_y(),
                   flock.get_phi_angles(),
-                  pivot=cp.get_quiver_pivot())
+                  pivot=cp.init_pivot())
 
-    animation = FuncAnimation(fig, animate, fargs=(flock, Q, cp.get_animation_dt()), **cp.get_animation_kwargs())
+    animation = FuncAnimation(fig,
+                              animate,
+                              fargs=(flock, Q, cp.init_animation_fargs()),
+                              **cp.init_animation_kwargs())
 
-    plt.xlim(*cp.get_matplotlib_xlim_params())
-    plt.ylim(*cp.get_matplotlib_ylim_params())
+    plt.xlim(*cp.init_xlim())
+    plt.ylim(*cp.init_ylim())
     plt.show()
 
 

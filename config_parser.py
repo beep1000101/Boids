@@ -31,8 +31,9 @@ class ConfigParserBaseClass:
     def _get_ylim_max(self) -> int:
         return int(self.config["matplotlib_params"]["ylim_max"])
 
-    def _get_figsize(self) -> int:
-        return int(self.config["matplotlib_params"]["figsize"])
+    def _get_figsize(self) -> tuple:
+        return tuple(
+            [int(element) for element in self.config["matplotlib_params"]["figsize"].split(",")])
 
     """QUIVER PARAMS"""
 
@@ -60,3 +61,29 @@ class ConfigParserBaseClass:
 
     def _get_distance(self) -> int:
         return int(self.config["universe_size"]["distance"])
+
+
+class ConfigParser(ConfigParserBaseClass):
+    def init_pivot(self) -> str:
+        return self._get_quiver_pivot()
+
+    def init_xlim(self) -> tuple:
+        return tuple([self._get_xlim_min(), self._get_xlim_max()])
+
+    def init_ylim(self) -> tuple:
+        return tuple([self._get_ylim_min(), self._get_ylim_max()])
+
+    def init_flock(self) -> dict:
+        return {
+            "number_of_boids": self._get_number_of_boids(),
+            "boid_velocity_max": self._get_boid_max_velocity()
+        }
+
+    def init_figsize(self) -> tuple:
+        return tuple(self._get_figsize())
+
+    def init_animation_fargs(self) -> float:
+        return self._get_dt()
+
+    def init_animation_kwargs(self) -> dict:
+        return {"interval": self._get_interval(), "blit": self._get_blit()}
