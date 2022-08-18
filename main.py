@@ -8,7 +8,7 @@ from matplotlib.animation import FuncAnimation
 def main():
     cp = ConfigParser()
 
-    def animate(i: int, flock_object: Flock, quiver_object, dt: float):
+    def animate(_: int, flock_object: Flock, quiver_object, dt: float):
         flock_object.update_flock_state(dt)
         ax.cla()
         quiver_object = ax.quiver(flock.get_positions_x(),
@@ -24,7 +24,7 @@ def main():
 
     flock = Flock(**cp.init_flock())
 
-    fig, ax = plt.subplots(figsize=cp.init_figsize())
+    fig, ax = plt.subplots(**cp.init_figsize())
 
     Q = ax.quiver(flock.get_positions_x(),
                   flock.get_positions_y(),
