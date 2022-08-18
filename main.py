@@ -24,7 +24,7 @@ def main():
 
     flock = Flock(**cp.init_flock())
 
-    fig, ax = plt.subplots(**cp.init_figsize())
+    fig, ax = plt.subplots(**cp.init_subplot())
 
     Q = ax.quiver(flock.get_positions_x(),
                   flock.get_positions_y(),

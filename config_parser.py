@@ -79,7 +79,7 @@ class ConfigParser(ConfigParserBaseClass):
             "boid_velocity_max": self._get_boid_max_velocity()
         }
 
-    def init_figsize(self) -> dict:
+    def init_subplot(self) -> dict:
         return {"figsize": tuple(self._get_figsize())}
 
     def init_animation_fargs(self) -> float:
