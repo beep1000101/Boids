@@ -7,7 +7,7 @@ from matplotlib.animation import FuncAnimation
 
 def main():
     modes = ("play", "save")
-    mode = modes[1]
+    mode = modes[0]
     cp = ConfigParser()
 
     def animate(_: int, flock_object: Flock, quiver_object, dt: float):
@@ -36,17 +36,22 @@ def main():
                   flock.get_phi_angles(),
                   pivot=cp.init_pivot())
 
-    animation = FuncAnimation(fig,
-                              animate,
-                              fargs=(flock, Q, cp.init_animation_fargs()),
-                              frames=600,
-                              **cp.init_animation_kwargs())
+    animation = FuncAnimation(
+        fig,
+        animate,
+        fargs=(flock, Q, cp.init_animation_fargs()),
+        # TODO: get rid of that magic number!
+        frames=600,
+        **cp.init_animation_kwargs())
+
     if mode == "play":
         plt.xlim(*cp.init_xlim())
         plt.ylim(*cp.init_ylim())
         plt.show()
+
     elif mode == "save":
         animation.save("filmik.gif", fps=60)
+
     else:
         print("invalid mode has been selected")
 
